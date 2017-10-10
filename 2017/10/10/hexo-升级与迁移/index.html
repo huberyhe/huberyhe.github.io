@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>[hexo]升级与迁移 | Hubery</title>
+  
+    <meta name="google-site-verification" content="n3vW5VWa0dZmPY-AA8UAp01xuVPkN5_IiepW50blPDA" />
+  
+  
+    <meta name="baidu-site-verification" content="bNiXz6eKG6" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1.起因是升级到ubuntu 16之后使用hexo遇到错误：(node:15317) [DEP0061] DeprecationWarning: fs.SyncWriteStream is deprecated. 分析：升级系统之后node版本也有升级, 然后fs.SyncWriteStream这个方法被废弃了，我们只要升级hexo博客同时保留数据就可以了。在查找资料的时候我发现一个很好的管理he">
+<meta name="keywords" content="hexo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[hexo]升级与迁移">
+<meta property="og:url" content="http://huberyhe.github.io/2017/10/10/hexo-升级与迁移/index.html">
+<meta property="og:site_name" content="Hubery">
+<meta property="og:description" content="1.起因是升级到ubuntu 16之后使用hexo遇到错误：(node:15317) [DEP0061] DeprecationWarning: fs.SyncWriteStream is deprecated. 分析：升级系统之后node版本也有升级, 然后fs.SyncWriteStream这个方法被废弃了，我们只要升级hexo博客同时保留数据就可以了。在查找资料的时候我发现一个很好的管理he">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-10-10T15:04:24.176Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[hexo]升级与迁移">
+<meta name="twitter:description" content="1.起因是升级到ubuntu 16之后使用hexo遇到错误：(node:15317) [DEP0061] DeprecationWarning: fs.SyncWriteStream is deprecated. 分析：升级系统之后node版本也有升级, 然后fs.SyncWriteStream这个方法被废弃了，我们只要升级hexo博客同时保留数据就可以了。在查找资料的时候我发现一个很好的管理he">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/scrollUp/image.css">
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <div class="logo">
+        <img src="/logo.png" alt="Profile Picture">
+      </div>
+      <div id="title">Hubery</div>
+      
+        <div id="subtitle">A Dual-Core, single-threaded worker</div>
+      
+       <ul class="my-socials">
+  
+  <li>
+  	<a href="http://github.com/huberyhe" class="github" target="_blank">
+  		<i class="fa fa-github"></i>
+  	</a>
+  </li>
+  
+  <li>
+  	<a href="http://weibo.com/1760895787" class="weibo" target="_blank">
+  		<i class="fa fa-weibo"></i>
+  	</a>
+  </li>
+  
+ 
+</ul>
+    </div>
+  </div>
+  <div id="header-inner" class="">
+    <nav id="main-nav">
+      <a id="main-nav-toggle" class="nav-icon"></a>
+      <!--
+        
+          
+            <a class="main-nav-link" href="/">首页</a>
+          
+            <a class="main-nav-link" href="/categories/life">生活</a>
+          
+            <a class="main-nav-link" href="/archives">归档</a>
+          
+        
+      -->
+    </nav>
+    <nav id="title-nav" style="display:none">
+      <a href="/">Hubery</a>
+      <img src="/logo.png" alt="Profile Picture">
+      <!--
+      <span id="title-nav-socials">
+        
+          <a href="http://github.com/huberyhe" class="github" target="_blank">
+            <i class="fa fa-github"></i>
+          </a>
+        
+          <a href="http://weibo.com/1760895787" class="weibo" target="_blank">
+            <i class="fa fa-weibo"></i>
+          </a>
+        
+       
+     </span>
+      -->
+    </nav>
+    <nav id="sub-nav">
+      
+      <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+    </nav>
+    <div id="search-form-wrap">
+      <form action="http://www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+        <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="搜索">
+        <input type="submit" value="" class="search-form-submit">
+        <input name=tn type=hidden value="bds">
+        <input name=cl type=hidden value="3">
+        <input name=ct type=hidden value="2097152">
+        <input type="hidden" name="si" value="huberyhe.github.io">
+      </form>
+    </div>
+  </div>
+  <div class="site-nav" style="display: none;">
+    <ul>
+      
+      
+        <li><a href="/">首页</a></li>
+      
+        <li><a href="/categories/life">生活</a></li>
+      
+        <li><a href="/archives">归档</a></li>
+      
+      
+    </ul>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-hexo-升级与迁移" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/10/10/hexo-升级与迁移/" class="article-date">
+  <time datetime="2017-10-10T15:04:17.000Z" itemprop="datePublished">2017-10-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      [hexo]升级与迁移
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-起因"><a href="#1-起因" class="headerlink" title="1.起因"></a>1.起因</h3><p>是升级到ubuntu 16之后使用hexo遇到错误：<br><strong>(node:15317) [DEP0061] DeprecationWarning: fs.SyncWriteStream is deprecated.</strong></p>
+<p><strong>分析：</strong>升级系统之后node版本也有升级, 然后<code>fs.SyncWriteStream</code>这个方法被废弃了，我们只要升级hexo博客同时保留数据就可以了。在查找资料的时候我发现一个很好的管理hexo博客的方法（<a href="https://zhihu.com/question/21193762/answer/79109280" target="_blank" rel="external">使用hexo，如果换了电脑怎么更新博客？ - 回答作者: CrazyMilk</a>），将hexo博客的源码放到了github page的仓库里，于是我索性升级和迁移一起做了。</p>
+<p><strong>OLD OS:</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">www@v-ubuntu:~/git_repo/hexo_blog$ hexo version</div><div class="line">hexo: 3.3.7</div><div class="line">hexo-cli: 1.0.3</div><div class="line">os: Linux 4.4.0-87-generic linux x64</div><div class="line">http_parser: 2.5.0</div><div class="line">node: 4.2.4</div><div class="line">v8: 4.5.103.35</div><div class="line">uv: 1.7.5</div><div class="line">zlib: 1.2.8</div><div class="line">ares: 1.10.1-DEV</div><div class="line">modules: 46</div><div class="line">openssl: 1.0.2e</div></pre></td></tr></table></figure></p>
+<p><strong>NEW OS:</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">hubery@hubery-VirtualBox:~/Workspace/hexo_blog$ hexo version</div><div class="line">(node:17263) [DEP0061] DeprecationWarning: fs.SyncWriteStream is deprecated.</div><div class="line">hexo: 3.3.7</div><div class="line">hexo-cli: 1.0.3</div><div class="line">os: Linux 4.10.0-35-generic linux x64</div><div class="line">http_parser: 2.7.0</div><div class="line">node: 8.6.0</div><div class="line">v8: 6.0.287.53</div><div class="line">uv: 1.14.1</div><div class="line">zlib: 1.2.11</div><div class="line">ares: 1.10.1-DEV</div><div class="line">modules: 57</div><div class="line">nghttp2: 1.25.0</div><div class="line">openssl: 1.0.2l</div><div class="line">icu: 59.1</div><div class="line">unicode: 9.0</div><div class="line">cldr: 31.0.1</div><div class="line">tz: 2017b</div></pre></td></tr></table></figure></p>
+<h3 id="2-更新流程"><a href="#2-更新流程" class="headerlink" title="2.更新流程"></a>2.更新流程</h3><p>1.github page仓库：<a href="https://github.com/huberyhe/huberyhe.github.io" target="_blank" rel="external">huberyhe.github.io</a><br>2.hexo blog源码仓库：~/Workspace/hexo_blog<br>3.hexo安装：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash</div><div class="line">$ nvm install stable</div><div class="line">$ npm install -g hexo-cli</div></pre></td></tr></table></figure></p>
+<p>4.克隆github page仓库, 创建hexo空白分支用于存放hexo源码<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> ~/Workspace</div><div class="line">$ git <span class="built_in">clone</span> github:huberyhe/huberyhe.github.io.git</div><div class="line">$ <span class="built_in">cd</span> huberyhe.github.io/</div><div class="line">$ git checkout --orphan gh-pages</div></pre></td></tr></table></figure></p>
+<p>5.初始化hexo博客，拷贝旧仓库的数据部分<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ hexo init</div><div class="line">$ cp ../hexo_blog/<span class="built_in">source</span> ../hexo_blog/themes ../hexo_blog/_config.yml ../hexo_blog/package.json ../hexo_blog/new_from_md.sh ./ -Ra</div><div class="line">$ git add -A</div><div class="line">$ git commit -m <span class="string">"add branch hexo with hexo original files"</span></div><div class="line">$ git push origin hexo</div></pre></td></tr></table></figure></p>
+<p>5.在<a href="https://github.com/huberyhe/huberyhe.github.io" target="_blank" rel="external">huberyhe.github.io</a>上，将hexo设为默认分支<br>6.在本地对博客进行修改（添加新博文、修改样式等等）后，通过下面的流程进行管理</p>
+<ol>
+<li>依次执行<code>git add .</code>、<code>git commit -m &quot;...&quot;</code>、<code>git push origin hexo</code>指令将改动推送到GitHub（此时当前分支应为hexo）</li>
+<li>然后才执行<code>hexo g -d</code>发布网站到master分支上。</li>
+</ol>
+<blockquote>
+<p>参考：<br><a href="http://www.abrocks.com/2017/06/17/node8.0方法弃用处理/#more" target="_blank" rel="external">Hexo报错，DEP0061</a><br><a href="http://www.cnblogs.com/JinyaoLi/p/4672376.html" target="_blank" rel="external">将 HEXO 从 Ubuntu 迁移到 windows</a><br><a href="https://zhihu.com/question/21193762/answer/79109280" target="_blank" rel="external">使用hexo，如果换了电脑怎么更新博客？ - 回答作者: CrazyMilk</a><br><a href="https://hexo.io/docs/index.html" target="_blank" rel="external">Hexo Getting Started</a><br><a href="http://blog.csdn.net/playboyanta123/article/details/48975175" target="_blank" rel="external">git中创建新的空白分支</a></p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://huberyhe.github.io/2017/10/10/hexo-升级与迁移/" data-id="cj8lsf5nu0003tadtdxktolwt" class="article-share-link">分享到</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/08/16/vscode添加includePath/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">vscode添加includePath</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+  <section id="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section>
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Hubery He<br>
+      Theme <a href="https://github.com/henryhuang/oishi" target="_blank">Oishi</a>, Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <!--
+      <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/categories/life" class="mobile-nav-link">生活</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+</nav>
+    -->
+    
+<script>
+  var disqus_shortname = 'disqus_epqVtyT4y1';
+  
+  var disqus_url = 'http://huberyhe.github.io/2017/10/10/hexo-升级与迁移/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<!-- 百度分享 start -->
+
+<!-- 百度分享 end -->
+
+<script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+<script src="/js/jquery.scrollUp.min.js"></script>
+<script src="/js/jquery.transform.js"></script>
+<script src="/js/menu.js"></script>
+
+<script src="/js/script.js"></script>
+<script src="/js/scrollUp.js"></script>
+
+  </div>
+</body>
+</html>
