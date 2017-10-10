@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>vscode添加includePath | Hubery</title>
+  
+    <meta name="google-site-verification" content="n3vW5VWa0dZmPY-AA8UAp01xuVPkN5_IiepW50blPDA" />
+  
+  
+    <meta name="baidu-site-verification" content="bNiXz6eKG6" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="使用vscode打开C项目时，vscode无法找到头文件路径，提示：configure includePath for better intellisense results 解决：编辑~/.vscode/c_cpp_properties.json（ctrl + shift + p，键入C/Cpp : Edit Configurations，这样就打开了配置文件）， 在includePath字段添">
+<meta name="keywords" content="editer&amp;ide">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vscode添加includePath">
+<meta property="og:url" content="http://huberyhe.github.io/2017/08/16/vscode添加includePath/index.html">
+<meta property="og:site_name" content="Hubery">
+<meta property="og:description" content="使用vscode打开C项目时，vscode无法找到头文件路径，提示：configure includePath for better intellisense results 解决：编辑~/.vscode/c_cpp_properties.json（ctrl + shift + p，键入C/Cpp : Edit Configurations，这样就打开了配置文件）， 在includePath字段添">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-08-16T11:26:50.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vscode添加includePath">
+<meta name="twitter:description" content="使用vscode打开C项目时，vscode无法找到头文件路径，提示：configure includePath for better intellisense results 解决：编辑~/.vscode/c_cpp_properties.json（ctrl + shift + p，键入C/Cpp : Edit Configurations，这样就打开了配置文件）， 在includePath字段添">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/scrollUp/image.css">
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <div class="logo">
+        <img src="/logo.png" alt="Profile Picture">
+      </div>
+      <div id="title">Hubery</div>
+      
+        <div id="subtitle">A Dual-Core, single-threaded worker</div>
+      
+       <ul class="my-socials">
+  
+  <li>
+  	<a href="http://github.com/huberyhe" class="github" target="_blank">
+  		<i class="fa fa-github"></i>
+  	</a>
+  </li>
+  
+  <li>
+  	<a href="http://weibo.com/1760895787" class="weibo" target="_blank">
+  		<i class="fa fa-weibo"></i>
+  	</a>
+  </li>
+  
+ 
+</ul>
+    </div>
+  </div>
+  <div id="header-inner" class="">
+    <nav id="main-nav">
+      <a id="main-nav-toggle" class="nav-icon"></a>
+      <!--
+        
+          
+            <a class="main-nav-link" href="/">首页</a>
+          
+            <a class="main-nav-link" href="/categories/life">生活</a>
+          
+            <a class="main-nav-link" href="/archives">归档</a>
+          
+        
+      -->
+    </nav>
+    <nav id="title-nav" style="display:none">
+      <a href="/">Hubery</a>
+      <img src="/logo.png" alt="Profile Picture">
+      <!--
+      <span id="title-nav-socials">
+        
+          <a href="http://github.com/huberyhe" class="github" target="_blank">
+            <i class="fa fa-github"></i>
+          </a>
+        
+          <a href="http://weibo.com/1760895787" class="weibo" target="_blank">
+            <i class="fa fa-weibo"></i>
+          </a>
+        
+       
+     </span>
+      -->
+    </nav>
+    <nav id="sub-nav">
+      
+      <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+    </nav>
+    <div id="search-form-wrap">
+      <form action="http://www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+        <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="搜索">
+        <input type="submit" value="" class="search-form-submit">
+        <input name=tn type=hidden value="bds">
+        <input name=cl type=hidden value="3">
+        <input name=ct type=hidden value="2097152">
+        <input type="hidden" name="si" value="huberyhe.github.io">
+      </form>
+    </div>
+  </div>
+  <div class="site-nav" style="display: none;">
+    <ul>
+      
+      
+        <li><a href="/">首页</a></li>
+      
+        <li><a href="/categories/life">生活</a></li>
+      
+        <li><a href="/archives">归档</a></li>
+      
+      
+    </ul>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-vscode添加includePath" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/16/vscode添加includePath/" class="article-date">
+  <time datetime="2017-08-16T11:26:38.000Z" itemprop="datePublished">2017-08-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      vscode添加includePath
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>使用vscode打开C项目时，vscode无法找到头文件路径，提示：<code>configure includePath for better intellisense results</code></p>
+<p><strong>解决：</strong><br>编辑<code>~/.vscode/c_cpp_properties.json</code><br>（<code>ctrl + shift + p</code>，键入<code>C/Cpp : Edit Configurations</code>，这样就打开了配置文件）， 在<code>includePath</code>字段添加头文件的路径即可</p>
+<blockquote>
+<p>参考<br><a href="https://stackoverflow.com/questions/37522462/visual-studio-code-includepath" target="_blank" rel="external">Visual Studio Code includePath</a></p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://huberyhe.github.io/2017/08/16/vscode添加includePath/" data-id="cj8lgqjrg000e2hdtf4y1dszx" class="article-share-link">分享到</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/editer-ide/">editer&ide</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/10/10/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Hello World
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/07/16/oh-my-zshp配置/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">oh-my-zshp配置</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+  <section id="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section>
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Hubery He<br>
+      Theme <a href="https://github.com/henryhuang/oishi" target="_blank">Oishi</a>, Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <!--
+      <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/categories/life" class="mobile-nav-link">生活</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+</nav>
+    -->
+    
+<script>
+  var disqus_shortname = 'disqus_epqVtyT4y1';
+  
+  var disqus_url = 'http://huberyhe.github.io/2017/08/16/vscode添加includePath/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<!-- 百度分享 start -->
+
+<!-- 百度分享 end -->
+
+<script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+<script src="/js/jquery.scrollUp.min.js"></script>
+<script src="/js/jquery.transform.js"></script>
+<script src="/js/menu.js"></script>
+
+<script src="/js/script.js"></script>
+<script src="/js/scrollUp.js"></script>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>systemd | Hubery</title>
+  
+    <meta name="google-site-verification" content="n3vW5VWa0dZmPY-AA8UAp01xuVPkN5_IiepW50blPDA" />
+  
+  
+    <meta name="baidu-site-verification" content="bNiXz6eKG6" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="##实例 ###配置文件12345678910111213141516[Unit]Description=uWSGI EmperorAfter=syslog.target[Service]ExecStart=/root/uwsgi/uwsgi --ini /etc/uwsgi/emperor.ini# Requires systemd version 211 or newerRuntimeDire">
+<meta name="keywords" content="Linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="systemd">
+<meta property="og:url" content="http://huberyhe.github.io/2017/07/06/systemd/index.html">
+<meta property="og:site_name" content="Hubery">
+<meta property="og:description" content="##实例 ###配置文件12345678910111213141516[Unit]Description=uWSGI EmperorAfter=syslog.target[Service]ExecStart=/root/uwsgi/uwsgi --ini /etc/uwsgi/emperor.ini# Requires systemd version 211 or newerRuntimeDire">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-07-06T04:06:12.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="systemd">
+<meta name="twitter:description" content="##实例 ###配置文件12345678910111213141516[Unit]Description=uWSGI EmperorAfter=syslog.target[Service]ExecStart=/root/uwsgi/uwsgi --ini /etc/uwsgi/emperor.ini# Requires systemd version 211 or newerRuntimeDire">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/scrollUp/image.css">
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <div class="logo">
+        <img src="/logo.png" alt="Profile Picture">
+      </div>
+      <div id="title">Hubery</div>
+      
+        <div id="subtitle">A Dual-Core, single-threaded worker</div>
+      
+       <ul class="my-socials">
+  
+  <li>
+  	<a href="http://github.com/huberyhe" class="github" target="_blank">
+  		<i class="fa fa-github"></i>
+  	</a>
+  </li>
+  
+  <li>
+  	<a href="http://weibo.com/1760895787" class="weibo" target="_blank">
+  		<i class="fa fa-weibo"></i>
+  	</a>
+  </li>
+  
+ 
+</ul>
+    </div>
+  </div>
+  <div id="header-inner" class="">
+    <nav id="main-nav">
+      <a id="main-nav-toggle" class="nav-icon"></a>
+      <!--
+        
+          
+            <a class="main-nav-link" href="/">首页</a>
+          
+            <a class="main-nav-link" href="/categories/life">生活</a>
+          
+            <a class="main-nav-link" href="/archives">归档</a>
+          
+        
+      -->
+    </nav>
+    <nav id="title-nav" style="display:none">
+      <a href="/">Hubery</a>
+      <img src="/logo.png" alt="Profile Picture">
+      <!--
+      <span id="title-nav-socials">
+        
+          <a href="http://github.com/huberyhe" class="github" target="_blank">
+            <i class="fa fa-github"></i>
+          </a>
+        
+          <a href="http://weibo.com/1760895787" class="weibo" target="_blank">
+            <i class="fa fa-weibo"></i>
+          </a>
+        
+       
+     </span>
+      -->
+    </nav>
+    <nav id="sub-nav">
+      
+      <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+    </nav>
+    <div id="search-form-wrap">
+      <form action="http://www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+        <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="搜索">
+        <input type="submit" value="" class="search-form-submit">
+        <input name=tn type=hidden value="bds">
+        <input name=cl type=hidden value="3">
+        <input name=ct type=hidden value="2097152">
+        <input type="hidden" name="si" value="huberyhe.github.io">
+      </form>
+    </div>
+  </div>
+  <div class="site-nav" style="display: none;">
+    <ul>
+      
+      
+        <li><a href="/">首页</a></li>
+      
+        <li><a href="/categories/life">生活</a></li>
+      
+        <li><a href="/archives">归档</a></li>
+      
+      
+    </ul>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-systemd" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/07/06/systemd/" class="article-date">
+  <time datetime="2017-07-06T04:06:02.000Z" itemprop="datePublished">2017-07-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      systemd
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##实例</p>
+<p>###配置文件<br><figure class="highlight ini"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="section">[Unit]</span></div><div class="line"><span class="attr">Description</span>=uWSGI Emperor</div><div class="line"><span class="attr">After</span>=syslog.target</div><div class="line"></div><div class="line"><span class="section">[Service]</span></div><div class="line"><span class="attr">ExecStart</span>=/root/uwsgi/uwsgi --ini /etc/uwsgi/emperor.ini</div><div class="line"><span class="comment"># Requires systemd version 211 or newer</span></div><div class="line"><span class="attr">RuntimeDirectory</span>=uwsgi</div><div class="line"><span class="attr">Restart</span>=always</div><div class="line"><span class="attr">KillSignal</span>=SIGQUIT</div><div class="line"><span class="attr">Type</span>=notify</div><div class="line"><span class="attr">StandardError</span>=syslog</div><div class="line"><span class="attr">NotifyAccess</span>=all</div><div class="line"></div><div class="line"><span class="section">[Install]</span></div><div class="line"><span class="attr">WantedBy</span>=multi-user.target</div></pre></td></tr></table></figure></p>
+<p>保存为 /etc/systemd/system/emperor.uwsgi.service； 或保存为/usr/lib/systemd/system/emperor.uwsgi.service，然后 <code>systemctl enable emperor.uwsgi.service</code>，这将创建同等软链接。</p>
+<p>###启动与关闭、重启动<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">systemctl start emperor.uwsgi.service</div><div class="line">systemctl stop emperor.uwsgi.service</div><div class="line">systemctl restart emperor.uwsgi.service</div><div class="line">systemctl status emperor.uwsgi.service</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>参考：<br><a href="https://blog.linuxeye.com/400.html" target="_blank" rel="external">阮一峰的网络日志&gt;&gt;Systemd 入门教程：命令篇</a><br><a href="http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-commands.html" target="_blank" rel="external">Linux运维笔记&gt;&gt;systemd详解</a><br><a href="https://blog.linuxeye.com/400.html" target="_blank" rel="external">systemd详解</a><br><a href="https://www.freedesktop.org/software/systemd/man/systemd.service.html#" target="_blank" rel="external">systemd.service</a><br><a href="https://github.com/systemd/systemd/issues/1231" target="_blank" rel="external">RuntimeDirectory= creates directory with wrong group if Group= is set</a></p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://huberyhe.github.io/2017/07/06/systemd/" data-id="cj8lgqjr900092hdt54ebqu07" class="article-share-link">分享到</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/07/06/hexo-导入markdown文件/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          [hexo]导入markdown文件
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/07/05/hexo-添加搜索引擎收录/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">[hexo]添加搜索引擎收录</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+  <section id="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section>
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Hubery He<br>
+      Theme <a href="https://github.com/henryhuang/oishi" target="_blank">Oishi</a>, Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <!--
+      <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/categories/life" class="mobile-nav-link">生活</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+</nav>
+    -->
+    
+<script>
+  var disqus_shortname = 'disqus_epqVtyT4y1';
+  
+  var disqus_url = 'http://huberyhe.github.io/2017/07/06/systemd/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<!-- 百度分享 start -->
+
+<!-- 百度分享 end -->
+
+<script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+<script src="/js/jquery.scrollUp.min.js"></script>
+<script src="/js/jquery.transform.js"></script>
+<script src="/js/menu.js"></script>
+
+<script src="/js/script.js"></script>
+<script src="/js/scrollUp.js"></script>
+
+  </div>
+</body>
+</html>

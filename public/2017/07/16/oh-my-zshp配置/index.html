@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>oh-my-zshp配置 | Hubery</title>
+  
+    <meta name="google-site-verification" content="n3vW5VWa0dZmPY-AA8UAp01xuVPkN5_IiepW50blPDA" />
+  
+  
+    <meta name="baidu-site-verification" content="bNiXz6eKG6" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="oh-my-zsh是做什么的开源的zsh配置工具，它的主题和插件系统可以为zsh扩展外观和很多有用的功能，官方是这样介绍的：  Oh-My-Zsh is an open source, community-driven framework for managing your ZSH configuration. It comes bundled with a ton of helpful func">
+<meta name="keywords" content="Linux,Bash">
+<meta property="og:type" content="article">
+<meta property="og:title" content="oh-my-zshp配置">
+<meta property="og:url" content="http://huberyhe.github.io/2017/07/16/oh-my-zshp配置/index.html">
+<meta property="og:site_name" content="Hubery">
+<meta property="og:description" content="oh-my-zsh是做什么的开源的zsh配置工具，它的主题和插件系统可以为zsh扩展外观和很多有用的功能，官方是这样介绍的：  Oh-My-Zsh is an open source, community-driven framework for managing your ZSH configuration. It comes bundled with a ton of helpful func">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://wx4.sinaimg.cn/large/68f5232bgy1fhllevkbyaj20ix06ydgl.jpg">
+<meta property="og:image" content="http://wx2.sinaimg.cn/large/68f5232bgy1fhllez4s27j20ix06yaav.jpg">
+<meta property="og:image" content="http://wx1.sinaimg.cn/mw690/68f5232bgy1fhllty9ugvj20ix06y3ze.jpg">
+<meta property="og:updated_time" content="2017-07-16T04:38:28.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="oh-my-zshp配置">
+<meta name="twitter:description" content="oh-my-zsh是做什么的开源的zsh配置工具，它的主题和插件系统可以为zsh扩展外观和很多有用的功能，官方是这样介绍的：  Oh-My-Zsh is an open source, community-driven framework for managing your ZSH configuration. It comes bundled with a ton of helpful func">
+<meta name="twitter:image" content="http://wx4.sinaimg.cn/large/68f5232bgy1fhllevkbyaj20ix06ydgl.jpg">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/scrollUp/image.css">
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <div class="logo">
+        <img src="/logo.png" alt="Profile Picture">
+      </div>
+      <div id="title">Hubery</div>
+      
+        <div id="subtitle">A Dual-Core, single-threaded worker</div>
+      
+       <ul class="my-socials">
+  
+  <li>
+  	<a href="http://github.com/huberyhe" class="github" target="_blank">
+  		<i class="fa fa-github"></i>
+  	</a>
+  </li>
+  
+  <li>
+  	<a href="http://weibo.com/1760895787" class="weibo" target="_blank">
+  		<i class="fa fa-weibo"></i>
+  	</a>
+  </li>
+  
+ 
+</ul>
+    </div>
+  </div>
+  <div id="header-inner" class="">
+    <nav id="main-nav">
+      <a id="main-nav-toggle" class="nav-icon"></a>
+      <!--
+        
+          
+            <a class="main-nav-link" href="/">首页</a>
+          
+            <a class="main-nav-link" href="/categories/life">生活</a>
+          
+            <a class="main-nav-link" href="/archives">归档</a>
+          
+        
+      -->
+    </nav>
+    <nav id="title-nav" style="display:none">
+      <a href="/">Hubery</a>
+      <img src="/logo.png" alt="Profile Picture">
+      <!--
+      <span id="title-nav-socials">
+        
+          <a href="http://github.com/huberyhe" class="github" target="_blank">
+            <i class="fa fa-github"></i>
+          </a>
+        
+          <a href="http://weibo.com/1760895787" class="weibo" target="_blank">
+            <i class="fa fa-weibo"></i>
+          </a>
+        
+       
+     </span>
+      -->
+    </nav>
+    <nav id="sub-nav">
+      
+      <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+    </nav>
+    <div id="search-form-wrap">
+      <form action="http://www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+        <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="搜索">
+        <input type="submit" value="" class="search-form-submit">
+        <input name=tn type=hidden value="bds">
+        <input name=cl type=hidden value="3">
+        <input name=ct type=hidden value="2097152">
+        <input type="hidden" name="si" value="huberyhe.github.io">
+      </form>
+    </div>
+  </div>
+  <div class="site-nav" style="display: none;">
+    <ul>
+      
+      
+        <li><a href="/">首页</a></li>
+      
+        <li><a href="/categories/life">生活</a></li>
+      
+        <li><a href="/archives">归档</a></li>
+      
+      
+    </ul>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-oh-my-zshp配置" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/07/16/oh-my-zshp配置/" class="article-date">
+  <time datetime="2017-07-16T04:38:08.000Z" itemprop="datePublished">2017-07-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      oh-my-zshp配置
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="oh-my-zsh是做什么的"><a href="#oh-my-zsh是做什么的" class="headerlink" title="oh-my-zsh是做什么的"></a>oh-my-zsh是做什么的</h2><p>开源的zsh配置工具，它的主题和插件系统可以为zsh扩展外观和很多有用的功能，官方是这样介绍的：</p>
+<blockquote>
+<p>Oh-My-Zsh is an open source, community-driven framework for managing your ZSH configuration. It comes bundled with a ton of helpful functions, helpers, plugins, themes, and a few things that make you shout…</p>
+</blockquote>
+<p>Ubuntu默认的终端样式，用了很久，其实也不差<br><img src="http://wx4.sinaimg.cn/large/68f5232bgy1fhllevkbyaj20ix06ydgl.jpg" alt="默认bash"><br>但是用上oh-my-zsh后，更加美观且实用<br><img src="http://wx2.sinaimg.cn/large/68f5232bgy1fhllez4s27j20ix06yaav.jpg" alt="使用oh-my-zsh"></p>
+<h2 id="安装zsh"><a href="#安装zsh" class="headerlink" title="安装zsh"></a>安装zsh</h2><p>1.安装zsh：<code>sudo apt install zsh</code><br>2.确认安装：<code>zsh --version</code><br>3.设置为默认shell：<code>sudo chsh www -s $(which zsh)</code><br>4.注销重新登陆</p>
+<h2 id="安装和配置oh-my-zsh"><a href="#安装和配置oh-my-zsh" class="headerlink" title="安装和配置oh-my-zsh"></a>安装和配置oh-my-zsh</h2><p>默认的zsh很简陋，就不截图了<br>1.安装：<code>sh -c &quot;$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&quot;</code><br>2.设置主题为<code>agnoster</code>: vim ~/.zshrc<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ZSH_THEME=&quot;agnoster&quot;</div></pre></td></tr></table></figure></p>
+<p>3.默认用户下隐藏<code>user@hostname</code>: vim ~/.zshrc<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">export DEFAULT_USER=&quot;www&quot;</div></pre></td></tr></table></figure></p>
+<h2 id="安装字体支持"><a href="#安装字体支持" class="headerlink" title="安装字体支持"></a>安装字体支持</h2><p>此时终端是这样的，因为字体不支持，显示很奇怪<br><img src="http://wx1.sinaimg.cn/mw690/68f5232bgy1fhllty9ugvj20ix06y3ze.jpg" alt="缺少字体"><br><code>angoster</code>这个主题需要<code>Powerline-patched font</code>这个字体才能正常<br>1.安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"># clone</div><div class="line">git clone https://github.com/powerline/fonts.git</div><div class="line"># install</div><div class="line">cd fonts</div><div class="line">./install.sh</div><div class="line"># clean-up a bit</div><div class="line">cd ..</div><div class="line">rm -rf fonts</div></pre></td></tr></table></figure></p>
+<p>2.设置终端字体<br>打开<code>Edit-&gt;Profiles-&gt;Default-&gt;Edit-&gt;Font</code>， 选择<code>Ubuntu Mono derivative Powerline</code></p>
+<p>至此完成了最简单的配置，感受飞起的命令行吧！</p>
+<blockquote>
+<p>参考：<br><a href="http://ohmyz.sh/" target="_blank" rel="external">oh-my-zsh</a><br><a href="https://github.com/robbyrussell/oh-my-zsh/wiki/Themes" target="_blank" rel="external">Themes</a><br><a href="https://github.com/agnoster/agnoster-zsh-theme" target="_blank" rel="external">agnoster.zsh-theme</a><br><a href="https://github.com/powerline/fonts" target="_blank" rel="external">Powerline fonts</a><br><a href="http://www.jianshu.com/p/9a5c4cb0452d" target="_blank" rel="external">Ubuntu 下安装oh-my-zsh</a></p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://huberyhe.github.io/2017/07/16/oh-my-zshp配置/" data-id="cj8lgqjr600082hdtm4wb5sl3" class="article-share-link">分享到</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Bash/">Bash</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/08/16/vscode添加includePath/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          vscode添加includePath
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/07/06/hexo-导入markdown文件/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">[hexo]导入markdown文件</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+  <section id="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section>
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Hubery He<br>
+      Theme <a href="https://github.com/henryhuang/oishi" target="_blank">Oishi</a>, Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <!--
+      <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/categories/life" class="mobile-nav-link">生活</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+</nav>
+    -->
+    
+<script>
+  var disqus_shortname = 'disqus_epqVtyT4y1';
+  
+  var disqus_url = 'http://huberyhe.github.io/2017/07/16/oh-my-zshp配置/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<!-- 百度分享 start -->
+
+<!-- 百度分享 end -->
+
+<script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+<script src="/js/jquery.scrollUp.min.js"></script>
+<script src="/js/jquery.transform.js"></script>
+<script src="/js/menu.js"></script>
+
+<script src="/js/script.js"></script>
+<script src="/js/scrollUp.js"></script>
+
+  </div>
+</body>
+</html>
