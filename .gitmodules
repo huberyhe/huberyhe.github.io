@@ -1,0 +1,6 @@
+[submodule "themes/oishi"]
+	path = themes/oishi
+	url = https://github.com/henryhuang/oishi.git
+[submodule "themes/yilia"]
+	path = themes/yilia
+	url = https://github.com/litten/hexo-theme-yilia.git
