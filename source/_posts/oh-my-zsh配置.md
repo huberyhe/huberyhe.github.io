@@ -1,5 +1,5 @@
 ---
-title: oh-my-zshp配置
+title: oh-my-zsh配置
 date: 2017-07-16 12:38:08
 tags:
 - Linux
@@ -10,9 +10,9 @@ tags:
 > Oh-My-Zsh is an open source, community-driven framework for managing your ZSH configuration. It comes bundled with a ton of helpful functions, helpers, plugins, themes, and a few things that make you shout...
 
 Ubuntu默认的终端样式，用了很久，其实也不差
-![默认bash](http://wx4.sinaimg.cn/large/68f5232bgy1fhllevkbyaj20ix06ydgl.jpg)
+![默认bash](http://qn-img.sreping.com/img/202202232308313.jpeg)
 但是用上oh-my-zsh后，更加美观且实用
-![使用oh-my-zsh](http://wx2.sinaimg.cn/large/68f5232bgy1fhllez4s27j20ix06yaav.jpg)
+![使用oh-my-zsh](http://qn-img.sreping.com/img/202202232308451.png)
 ## 安装zsh
 1.安装zsh：`sudo apt install zsh`
 2.确认安装：`zsh --version`
@@ -31,7 +31,7 @@ export DEFAULT_USER="www"
 ```
 ## 安装字体支持
 此时终端是这样的，因为字体不支持，显示很奇怪
-![缺少字体](http://wx1.sinaimg.cn/mw690/68f5232bgy1fhllty9ugvj20ix06y3ze.jpg)
+![缺少字体](http://qn-img.sreping.com/img/202202232309621.png)
 `angoster`这个主题需要`Powerline-patched font`这个字体才能正常
 1.安装
 ```
