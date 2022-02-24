@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>supervisor使用 | Hubery</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Supervisor 是一个 CS 模式系统，允许用户在类 UNIX 系统上监测和管理一定数量的进程，还支持 Web 界面管理进程。它的目标与 launchd, daemontools 和runit 有些相似, 但是与它们不一样的是, 它不是作为 init (进程号pid是1)运行. 它是被用来控制进程, 并且它在启动的时候和一般程序并无二致。supervisord 还要求管理的程序是非 daem">
+<meta property="og:type" content="article">
+<meta property="og:title" content="supervisor使用">
+<meta property="og:url" content="http://huberyhe.github.io/2022/02/24/supervisor%E4%BD%BF%E7%94%A8/index.html">
+<meta property="og:site_name" content="Hubery">
+<meta property="og:description" content="Supervisor 是一个 CS 模式系统，允许用户在类 UNIX 系统上监测和管理一定数量的进程，还支持 Web 界面管理进程。它的目标与 launchd, daemontools 和runit 有些相似, 但是与它们不一样的是, 它不是作为 init (进程号pid是1)运行. 它是被用来控制进程, 并且它在启动的时候和一般程序并无二致。supervisord 还要求管理的程序是非 daem">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://7xk1pm.com1.z0.glb.clouddn.com/wp-content/uploads/2015/09/Supervisor-01.png">
+<meta property="article:published_time" content="2022-02-24T15:18:37.000Z">
+<meta property="article:modified_time" content="2022-02-24T15:19:18.155Z">
+<meta property="article:author" content="Hubery He">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="Tools">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://7xk1pm.com1.z0.glb.clouddn.com/wp-content/uploads/2015/09/Supervisor-01.png">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/css/scrollUp/image.css">
+
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <div class="logo">
+        <img src="/logo.png" alt="Profile Picture">
+      </div>
+      <div id="title">Hubery</div>
+      
+        <div id="subtitle">A Dual-Core, single-threaded worker</div>
+      
+       <ul class="my-socials">
+  
+  <li>
+  	<a href="http://github.com/huberyhe" class="github" target="_blank">
+  		<i class="fa fa-github"></i>
+  	</a>
+  </li>
+  
+  <li>
+  	<a href="http://weibo.com/1760895787" class="weibo" target="_blank">
+  		<i class="fa fa-weibo"></i>
+  	</a>
+  </li>
+  
+ 
+</ul>
+    </div>
+  </div>
+  <div id="header-inner" class="">
+    <nav id="main-nav">
+      <a id="main-nav-toggle" class="nav-icon"></a>
+      <!--
+        
+          
+            <a class="main-nav-link" href="/">首页</a>
+          
+            <a class="main-nav-link" href="/categories/life">生活</a>
+          
+            <a class="main-nav-link" href="/archives">归档</a>
+          
+        
+      -->
+    </nav>
+    <nav id="title-nav" style="display:none">
+      <a href="/">Hubery</a>
+      <img src="/logo.png" alt="Profile Picture">
+      <!--
+      <span id="title-nav-socials">
+        
+       
+     </span>
+      -->
+    </nav>
+    <nav id="sub-nav">
+      
+      <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+    </nav>
+    <div id="search-form-wrap">
+      <form action="http://www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+        <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="搜索">
+        <input type="submit" value="" class="search-form-submit">
+        <input name=tn type=hidden value="bds">
+        <input name=cl type=hidden value="3">
+        <input name=ct type=hidden value="2097152">
+        <input type="hidden" name="si" value="huberyhe.github.io">
+      </form>
+    </div>
+  </div>
+  <div class="site-nav" style="display: none;">
+    <ul>
+      
+      
+        <li><a href="/">首页</a></li>
+      
+        <li><a href="/categories/life">生活</a></li>
+      
+        <li><a href="/archives">归档</a></li>
+      
+      
+    </ul>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-supervisor使用" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2022/02/24/supervisor%E4%BD%BF%E7%94%A8/" class="article-date">
+  <time datetime="2022-02-24T15:18:37.000Z" itemprop="datePublished">2022-02-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      supervisor使用
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Supervisor 是一个 CS 模式系统，允许用户在类 UNIX 系统上监测和管理一定数量的进程，还支持 Web 界面管理进程。它的目标与 launchd, daemontools 和runit 有些相似, 但是与它们不一样的是, 它不是作为 init (进程号pid是1)运行. 它是被用来控制进程, 并且它在启动的时候和一般程序并无二致。<br>supervisord 还要求管理的程序是非 daemon 程序，supervisord 会帮你把它转成 daemon 程序, Monit 和 Supervisord 的一个比较大的差异是 Supervisord 管理的进程必须由 Supervisord来启动，Monit 可以管理已经在运行的程序</p>
+<h3 id="一、安装-Supervisor"><a href="#一、安装-Supervisor" class="headerlink" title="一、安装 Supervisor"></a>一、安装 Supervisor</h3><p>Supervisor 是由 python 编写的，先安装 python 和 pip (python 包管理工具)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install epel* python python-pip -y</span><br></pre></td></tr></table></figure>
+<p>用 pip 安装 supervisor<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install supervisor</span><br></pre></td></tr></table></figure></p>
+<p>安装后，会出现2个可执行文件：<br>/usr/bin/supervisord – supervisor 服务守护进程<br>/usr/bin/supervisorctl – supervisor 控制台进程</p>
+<p>生成默认配置文件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo_supervisord_conf &gt; /etc/supervisord.conf</span><br></pre></td></tr></table></figure></p>
+<h3 id="二、配置-Supervisor"><a href="#二、配置-Supervisor" class="headerlink" title="二、配置 Supervisor"></a>二、配置 Supervisor</h3><p>这里以 Nginx 为例介绍怎么管理应用进程</p>
+<p>1、安装 nginx<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install nginx      <span class="comment"># 安装 nginx</span></span><br></pre></td></tr></table></figure><br>设置 nginx 不以后台模式运行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -i.bak <span class="string">&#x27;/worker_processes/a daemon off;&#x27;</span> /etc/nginx/nginx.conf</span><br></pre></td></tr></table></figure></p>
+<p>2、设置 supervisord<br>主要通过修改其主配置文件实现<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/supervisord.conf</span><br></pre></td></tr></table></figure><br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">[inet_http_server]             ; 开启TCP/IP http 服务器</span><br><span class="line">port=192.168.18.10:9001        ; 侦听端口</span><br><span class="line">username=user                  ; 认证用户名</span><br><span class="line">password=123                   ; 密码</span><br><span class="line"></span><br><span class="line">[supervisord]</span><br><span class="line">logfile=/tmp/supervisord.log    ; 日志输出文件</span><br><span class="line">logfile_maxbytes=50MB           ; 日志最大空间</span><br><span class="line">logfile_backups=10              ; 日志轮转保留数</span><br><span class="line">loglevel=info                   ; (日志等级; default info; others: debug,warn,trace)</span><br><span class="line">pidfile=/tmp/supervisord.pid    ; (pid文件; default supervisord.pid)</span><br><span class="line">nodaemon=false                  ; (前台运行 ;default false)</span><br><span class="line">minfds=1024                     ; (最小文件描述符数 ;default 1024)</span><br><span class="line">minprocs=200                    ; (最小进程数  ;default 200)</span><br><span class="line"></span><br><span class="line">[rpcinterface:supervisor]       ; rpc 接口</span><br><span class="line">supervisor.rpcinterface_factory = supervisor.rpcinterface:make_main_rpcinterface</span><br><span class="line"></span><br><span class="line">[supervisorctl]    ; 控制台设置</span><br><span class="line">erverurl=unix:///tmp/supervisor.sock    ; socket 访问路径</span><br><span class="line">serverurl=http://192.168.18.10:9001     ; URL 访问路径</span><br><span class="line">username=user                           ; 使用的认证用户名 （上同）</span><br><span class="line">password=123                            ; 密码</span><br><span class="line">prompt=mysupervisor                     ; cmd line prompt (default &quot;supervisor&quot;)</span><br><span class="line">history_file=~/.sc_history              ; use readline history if available</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[program:nginx]</span><br><span class="line">command=/usr/local/nginx/sbin/nginx -c /etc/nginx/nginx.conf         ; 程序路径</span><br><span class="line">autorestart=true                                      ; 自动重启</span><br><span class="line">priority=999                                          ; 优先级</span><br><span class="line">startsecs=1                                           ; 重启前等待时间</span><br><span class="line">startretries=100                                      ; 最大重启次数 </span><br><span class="line">stdout_logfile=/tmp/supervisor/nginx/nginx.log        ; 日志文件</span><br><span class="line">stdout_logfile_maxbytes=10MB                          ; 日志文件最大容量</span><br><span class="line">stderr_logfile=/tmp/supervisor/nginx/nginx_err.log    ; 错误日志文件</span><br><span class="line">stderr_logfile_maxbytes=1MB                           ; 错误日志文件最大容量</span><br><span class="line"></span><br></pre></td></tr></table></figure><br>创建日志目录，设置权限<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p /tmp/supervisor/nginx/</span><br><span class="line"><span class="built_in">chown</span> -R nginx:nginx /tmp/supervisor/nginx/</span><br></pre></td></tr></table></figure></p>
+<p>启动 supervisord 的后台进程：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">supervisord -c /etc/supervisord.conf</span><br></pre></td></tr></table></figure></p>
+<p>加入开机启动项<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;supervisord -c /etc/supervisord.conf&quot;</span> &gt;&gt; /etc/rc.local</span><br></pre></td></tr></table></figure></p>
+<p>防火墙上放行 Web 端口<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">iptables -I INPUT -m state --state NEW -p tcp --dport 9001 -j ACCEPT</span><br><span class="line">service iptables save</span><br></pre></td></tr></table></figure></p>
+<h3 id="三、管理界面介绍"><a href="#三、管理界面介绍" class="headerlink" title="三、管理界面介绍"></a>三、管理界面介绍</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">supervisorctl start nginx  # 启动 nginx</span><br><span class="line">supervisorctl start all    # 启动所有进程</span><br><span class="line">supervisorctl status       # 查看进程状态</span><br><span class="line">supervisorctl tail -f ssserver stderr	# debug查看日志</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>也可使用交互模式管理进程：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">supervisorctl</span><br><span class="line">nginx                            RUNNING   pid 4883, <span class="built_in">uptime</span> 0:02:03</span><br><span class="line">mysupervisor&gt;</span><br><span class="line">mysupervisor&gt; <span class="built_in">help</span></span><br><span class="line">default commands (<span class="built_in">type</span> <span class="built_in">help</span> &amp;lt;topic&amp;gt;):</span><br><span class="line">=====================================</span><br><span class="line">add    clear  <span class="built_in">fg</span>        open  quit    remove  restart   start   stop  update</span><br><span class="line">avail  <span class="built_in">exit</span>   maintail  pid   reload  reread  shutdown  status  <span class="built_in">tail</span>  version</span><br><span class="line"></span><br></pre></td></tr></table></figure><br>还可使用 Web 界面管理<br><img src="http://7xk1pm.com1.z0.glb.clouddn.com/wp-content/uploads/2015/09/Supervisor-01.png" alt="Web 界面管理"><br>测试：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">lsof -i:80 <span class="comment">#　查看到此时的 PID 为 1677</span></span><br><span class="line">COMMAND  PID  USER   FD   TYPE DEVICE SIZE/OFF NODE NAME</span><br><span class="line">nginx   1677  root    6u  IPv4  29067      0t0  TCP *:http (LISTEN)</span><br><span class="line">nginx   1678 nginx    6u  IPv4  29067      0t0  TCP *:http (LISTEN)</span><br><span class="line"></span><br><span class="line">[root@Srv-A meld3-1.0.2]<span class="comment"># killall nginx #关闭所有 nginx 进程：</span></span><br><span class="line">[root@Srv-A meld3-1.0.2]<span class="comment"># lsof -i:80 # 此时，已经生成了新的 PID 1681</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="Debug"><a href="#Debug" class="headerlink" title="Debug:"></a>Debug:</h4><p>生成配置文件时<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">supervisord -c /etc/supervisord.conf</span><br></pre></td></tr></table></figure><br>出现：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">&quot;/usr/bin/echo_supervisord_conf&quot;</span>, line 5, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    from pkg_resources import load_entry_point</span><br><span class="line">  File <span class="string">&quot;/usr/lib/python2.6/site-packages/setuptools-0.6c11-py2.6.egg/pkg_resources.py&quot;</span>, line 2603, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">  File <span class="string">&quot;/usr/lib/python2.6/site-packages/setuptools-0.6c11-py2.6.egg/pkg_resources.py&quot;</span>, line 666, <span class="keyword">in</span> require</span><br><span class="line">  File <span class="string">&quot;/usr/lib/python2.6/site-packages/setuptools-0.6c11-py2.6.egg/pkg_resources.py&quot;</span>, line 565, <span class="keyword">in</span> resolve</span><br><span class="line">pkg_resources.DistributionNotFound: meld3&gt;=0.6.5</span><br><span class="line"></span><br></pre></td></tr></table></figure><br>解决方法：pip安装的meld3不可用，手动安装。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wget https://pypi.python.org/packages/source/m/meld3/meld3-1.0.2.tar.gz</span><br><span class="line">tar -zxf meld3-1.0.2.tar.gz</span><br><span class="line"><span class="built_in">cd</span> meld3-1.0.2</span><br><span class="line">python setup.py install</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>参考：<br><a target="_blank" rel="noopener" href="http://supervisord.org/">http://supervisord.org/</a><br><a target="_blank" rel="noopener" href="http://supervisord.org/installing.html">http://supervisord.org/installing.html</a></p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://huberyhe.github.io/2022/02/24/supervisor%E4%BD%BF%E7%94%A8/" data-id="cl015mdq60005moc034ixbrbx" class="article-share-link">分享到</a>
+      
+
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tools/" rel="tag">Tools</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2022/02/24/My/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">My</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+  <section id="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section>
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2022 Hubery He<br>
+      Theme <a href="https://github.com/henryhuang/oishi" target="_blank">Oishi</a>, Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <!--
+      <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/categories/life" class="mobile-nav-link">生活</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+</nav>
+    -->
+    
+<script>
+  var disqus_shortname = 'disqus_epqVtyT4y1';
+  
+  var disqus_url = 'http://huberyhe.github.io/2022/02/24/supervisor%E4%BD%BF%E7%94%A8/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<!-- 百度分享 start -->
+
+<!-- 百度分享 end -->
+
+<script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+
+<script src="/js/jquery.scrollUp.min.js"></script>
+
+
+<script src="/js/jquery.transform.js"></script>
+
+
+<script src="/js/menu.js"></script>
+
+
+
+<script src="/js/script.js"></script>
+
+
+<script src="/js/scrollUp.js"></script>
+
+
+  </div>
+</body>
+</html>

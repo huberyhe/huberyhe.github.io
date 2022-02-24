@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>CentOS 7下MySQL安装配置 | Hubery</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="安装：1234#centos 7yum install -y mariadb mariadb-server mariadb-devel#debian 8apt-get install nginx mariadb-server mariadb-client libmariadbclient-dev python-dev libssl-dev 启动与开机启动：12systemctl start mys">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CentOS 7下MySQL安装配置">
+<meta property="og:url" content="http://huberyhe.github.io/2017/06/29/CentOS-7%E4%B8%8BMySQL%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/index.html">
+<meta property="og:site_name" content="Hubery">
+<meta property="og:description" content="安装：1234#centos 7yum install -y mariadb mariadb-server mariadb-devel#debian 8apt-get install nginx mariadb-server mariadb-client libmariadbclient-dev python-dev libssl-dev 启动与开机启动：12systemctl start mys">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2017-06-29T07:07:43.000Z">
+<meta property="article:modified_time" content="2022-02-24T14:54:30.414Z">
+<meta property="article:author" content="Hubery He">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="MySQL">
+<meta name="twitter:card" content="summary">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/css/scrollUp/image.css">
+
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <div class="logo">
+        <img src="/logo.png" alt="Profile Picture">
+      </div>
+      <div id="title">Hubery</div>
+      
+        <div id="subtitle">A Dual-Core, single-threaded worker</div>
+      
+       <ul class="my-socials">
+  
+  <li>
+  	<a href="http://github.com/huberyhe" class="github" target="_blank">
+  		<i class="fa fa-github"></i>
+  	</a>
+  </li>
+  
+  <li>
+  	<a href="http://weibo.com/1760895787" class="weibo" target="_blank">
+  		<i class="fa fa-weibo"></i>
+  	</a>
+  </li>
+  
+ 
+</ul>
+    </div>
+  </div>
+  <div id="header-inner" class="">
+    <nav id="main-nav">
+      <a id="main-nav-toggle" class="nav-icon"></a>
+      <!--
+        
+          
+            <a class="main-nav-link" href="/">首页</a>
+          
+            <a class="main-nav-link" href="/categories/life">生活</a>
+          
+            <a class="main-nav-link" href="/archives">归档</a>
+          
+        
+      -->
+    </nav>
+    <nav id="title-nav" style="display:none">
+      <a href="/">Hubery</a>
+      <img src="/logo.png" alt="Profile Picture">
+      <!--
+      <span id="title-nav-socials">
+        
+       
+     </span>
+      -->
+    </nav>
+    <nav id="sub-nav">
+      
+      <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+    </nav>
+    <div id="search-form-wrap">
+      <form action="http://www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+        <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="搜索">
+        <input type="submit" value="" class="search-form-submit">
+        <input name=tn type=hidden value="bds">
+        <input name=cl type=hidden value="3">
+        <input name=ct type=hidden value="2097152">
+        <input type="hidden" name="si" value="huberyhe.github.io">
+      </form>
+    </div>
+  </div>
+  <div class="site-nav" style="display: none;">
+    <ul>
+      
+      
+        <li><a href="/">首页</a></li>
+      
+        <li><a href="/categories/life">生活</a></li>
+      
+        <li><a href="/archives">归档</a></li>
+      
+      
+    </ul>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-CentOS-7下MySQL安装配置" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/06/29/CentOS-7%E4%B8%8BMySQL%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" class="article-date">
+  <time datetime="2017-06-29T07:07:43.000Z" itemprop="datePublished">2017-06-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      CentOS 7下MySQL安装配置
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="安装："><a href="#安装：" class="headerlink" title="安装："></a>安装：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#centos 7</span></span><br><span class="line">yum install -y mariadb mariadb-server mariadb-devel</span><br><span class="line"><span class="comment">#debian 8</span></span><br><span class="line">apt-get install nginx mariadb-server mariadb-client libmariadbclient-dev python-dev libssl-dev</span><br></pre></td></tr></table></figure>
+<h3 id="启动与开机启动："><a href="#启动与开机启动：" class="headerlink" title="启动与开机启动："></a>启动与开机启动：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl start mysqld</span><br><span class="line">systemctl <span class="built_in">enable</span> mariadb</span><br></pre></td></tr></table></figure>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>初始状态下，在终端中输入mysql就可以直接进入数据库，进而可以更改root密码。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">[root@DptServer2 hubery]<span class="comment"># mysql</span></span><br><span class="line">Welcome to the MariaDB monitor.  Commands end with ; or \g.</span><br><span class="line">Your MariaDB connection <span class="built_in">id</span> is 2</span><br><span class="line">Server version: 5.5.47-MariaDB MariaDB Server</span><br><span class="line"></span><br><span class="line">Copyright (c) 2000, 2015, Oracle, MariaDB Corporation Ab and others.</span><br><span class="line"></span><br><span class="line">Type <span class="string">&#x27;help;&#x27;</span> or <span class="string">&#x27;\h&#x27;</span> <span class="keyword">for</span> <span class="built_in">help</span>. Type <span class="string">&#x27;\c&#x27;</span> to clear the current input statement.</span><br><span class="line"></span><br><span class="line">MariaDB [(none)]&gt; </span><br><span class="line">MariaDB [(none)]&gt; </span><br><span class="line">MariaDB [(none)]&gt; </span><br><span class="line">MariaDB [(none)]&gt; show databases;</span><br><span class="line">+--------------------+</span><br><span class="line">| Database           |</span><br><span class="line">+--------------------+</span><br><span class="line">| information_schema |</span><br><span class="line">| mysql              |</span><br><span class="line">| performance_schema |</span><br><span class="line">| <span class="built_in">test</span>               |</span><br><span class="line">+--------------------+</span><br><span class="line">4 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br><span class="line"></span><br><span class="line">MariaDB [(none)]&gt; use mysql;</span><br><span class="line">Reading table information <span class="keyword">for</span> completion of table and column names</span><br><span class="line">You can turn off this feature to get a quicker startup with -A</span><br><span class="line"></span><br><span class="line">Database changed</span><br><span class="line">MariaDB [mysql]&gt; <span class="built_in">exit</span></span><br><span class="line">Bye</span><br><span class="line"></span><br></pre></td></tr></table></figure><br>mysql提供了一套安全的初始化操作，使用/usr/bin/mysql_secure_installation命令。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">[root@DptServer2 hubery]<span class="comment"># mysql_secure_installation</span></span><br><span class="line">/bin/mysql_secure_installation: line 379: find_mysql_client: <span class="built_in">command</span> not found</span><br><span class="line"></span><br><span class="line">NOTE: RUNNING ALL PARTS OF THIS SCRIPT IS RECOMMENDED FOR ALL MariaDB</span><br><span class="line">      SERVERS IN PRODUCTION USE!  PLEASE READ EACH STEP CAREFULLY!</span><br><span class="line"></span><br><span class="line">In order to <span class="built_in">log</span> into MariaDB to secure it, we<span class="string">&#x27;ll need the current</span></span><br><span class="line"><span class="string">password for the root user.  If you&#x27;</span>ve just installed MariaDB, and</span><br><span class="line">you haven<span class="string">&#x27;t set the root password yet, the password will be blank,</span></span><br><span class="line"><span class="string">so you should just press enter here.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Enter current password for root (enter for none): </span></span><br><span class="line"><span class="string">OK, successfully used password, moving on...</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Setting the root password ensures that nobody can log into the MariaDB</span></span><br><span class="line"><span class="string">root user without the proper authorisation.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Set root password? [Y/n] Y</span></span><br><span class="line"><span class="string">New password: </span></span><br><span class="line"><span class="string">Re-enter new password: </span></span><br><span class="line"><span class="string">Password updated successfully!</span></span><br><span class="line"><span class="string">Reloading privilege tables..</span></span><br><span class="line"><span class="string"> ... Success!</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">By default, a MariaDB installation has an anonymous user, allowing anyone</span></span><br><span class="line"><span class="string">to log into MariaDB without having to have a user account created for</span></span><br><span class="line"><span class="string">them.  This is intended only for testing, and to make the installation</span></span><br><span class="line"><span class="string">go a bit smoother.  You should remove them before moving into a</span></span><br><span class="line"><span class="string">production environment.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Remove anonymous users? [Y/n] </span></span><br><span class="line"><span class="string"> ... Success!</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Normally, root should only be allowed to connect from &#x27;</span>localhost<span class="string">&#x27;.  This</span></span><br><span class="line"><span class="string">ensures that someone cannot guess at the root password from the network.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Disallow root login remotely? [Y/n] </span></span><br><span class="line"><span class="string"> ... Success!</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">By default, MariaDB comes with a database named &#x27;</span><span class="built_in">test</span><span class="string">&#x27; that anyone can</span></span><br><span class="line"><span class="string">access.  This is also intended only for testing, and should be removed</span></span><br><span class="line"><span class="string">before moving into a production environment.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Remove test database and access to it? [Y/n] </span></span><br><span class="line"><span class="string"> - Dropping test database...</span></span><br><span class="line"><span class="string"> ... Success!</span></span><br><span class="line"><span class="string"> - Removing privileges on test database...</span></span><br><span class="line"><span class="string"> ... Success!</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Reloading the privilege tables will ensure that all changes made so far</span></span><br><span class="line"><span class="string">will take effect immediately.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Reload privilege tables now? [Y/n] </span></span><br><span class="line"><span class="string"> ... Success!</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Cleaning up...</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">All done!  If you&#x27;</span>ve completed all of the above steps, your MariaDB</span><br><span class="line">installation should now be secure.</span><br><span class="line"></span><br><span class="line">Thanks <span class="keyword">for</span> using MariaDB!</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>参考：<br><a target="_blank" rel="noopener" href="http://data-matters.blogspot.jp/2013/08/install-mysql-python-with-mariadb.html">Data Matters</a><br><a target="_blank" rel="noopener" href="https://downloads.mariadb.org/mariadb/repositories/#mirror=yamagata-university&amp;distro=Debian&amp;distro_release=jessie--jessie&amp;version=10.1">MariaDB Setting up</a><br><a target="_blank" rel="noopener" href="http://serverfault.com/questions/249340/install-openssl-dev-on-ubuntu-server">openssl-dev on Ubuntu</a><br><a target="_blank" rel="noopener" href="http://www.tecmint.com/install-mariadb-in-debian/">Installing MariaDB 10.1 in Debian Jessie and Running Various MariaDB Queries</a></p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://huberyhe.github.io/2017/06/29/CentOS-7%E4%B8%8BMySQL%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" data-id="cl015mdoc0000moc09mdi6lzc" class="article-share-link">分享到</a>
+      
+
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/07/05/vscode-Linter-pylint-is-not-installed/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          [vscode]Linter pylint is not installed
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+
+  <section id="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section>
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2022 Hubery He<br>
+      Theme <a href="https://github.com/henryhuang/oishi" target="_blank">Oishi</a>, Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <!--
+      <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/categories/life" class="mobile-nav-link">生活</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+</nav>
+    -->
+    
+<script>
+  var disqus_shortname = 'disqus_epqVtyT4y1';
+  
+  var disqus_url = 'http://huberyhe.github.io/2017/06/29/CentOS-7%E4%B8%8BMySQL%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<!-- 百度分享 start -->
+
+<!-- 百度分享 end -->
+
+<script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+
+<script src="/js/jquery.scrollUp.min.js"></script>
+
+
+<script src="/js/jquery.transform.js"></script>
+
+
+<script src="/js/menu.js"></script>
+
+
+
+<script src="/js/script.js"></script>
+
+
+<script src="/js/scrollUp.js"></script>
+
+
+  </div>
+</body>
+</html>

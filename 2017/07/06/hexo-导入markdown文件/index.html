@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>[hexo]导入markdown文件 | Hubery</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="习惯用markdown记笔记，然后导入到hexo，实际上之前写了许多markdown笔记需要导入，那么一般的流程是这样的：1.hexo new blog_name2.cat note.md &gt;&gt; source&#x2F;_posts&#x2F;blog_name.md3.edit tags of blog_name.md 我写了一个shell脚本（new_from_md.sh）去简化操作：12345678">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[hexo]导入markdown文件">
+<meta property="og:url" content="http://huberyhe.github.io/2017/07/06/hexo-%E5%AF%BC%E5%85%A5markdown%E6%96%87%E4%BB%B6/index.html">
+<meta property="og:site_name" content="Hubery">
+<meta property="og:description" content="习惯用markdown记笔记，然后导入到hexo，实际上之前写了许多markdown笔记需要导入，那么一般的流程是这样的：1.hexo new blog_name2.cat note.md &gt;&gt; source&#x2F;_posts&#x2F;blog_name.md3.edit tags of blog_name.md 我写了一个shell脚本（new_from_md.sh）去简化操作：12345678">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2017-07-06T04:15:48.000Z">
+<meta property="article:modified_time" content="2022-02-24T14:54:30.443Z">
+<meta property="article:author" content="Hubery He">
+<meta property="article:tag" content="hexo">
+<meta property="article:tag" content="Bash">
+<meta name="twitter:card" content="summary">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/css/scrollUp/image.css">
+
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <div class="logo">
+        <img src="/logo.png" alt="Profile Picture">
+      </div>
+      <div id="title">Hubery</div>
+      
+        <div id="subtitle">A Dual-Core, single-threaded worker</div>
+      
+       <ul class="my-socials">
+  
+  <li>
+  	<a href="http://github.com/huberyhe" class="github" target="_blank">
+  		<i class="fa fa-github"></i>
+  	</a>
+  </li>
+  
+  <li>
+  	<a href="http://weibo.com/1760895787" class="weibo" target="_blank">
+  		<i class="fa fa-weibo"></i>
+  	</a>
+  </li>
+  
+ 
+</ul>
+    </div>
+  </div>
+  <div id="header-inner" class="">
+    <nav id="main-nav">
+      <a id="main-nav-toggle" class="nav-icon"></a>
+      <!--
+        
+          
+            <a class="main-nav-link" href="/">首页</a>
+          
+            <a class="main-nav-link" href="/categories/life">生活</a>
+          
+            <a class="main-nav-link" href="/archives">归档</a>
+          
+        
+      -->
+    </nav>
+    <nav id="title-nav" style="display:none">
+      <a href="/">Hubery</a>
+      <img src="/logo.png" alt="Profile Picture">
+      <!--
+      <span id="title-nav-socials">
+        
+       
+     </span>
+      -->
+    </nav>
+    <nav id="sub-nav">
+      
+      <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+    </nav>
+    <div id="search-form-wrap">
+      <form action="http://www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+        <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="搜索">
+        <input type="submit" value="" class="search-form-submit">
+        <input name=tn type=hidden value="bds">
+        <input name=cl type=hidden value="3">
+        <input name=ct type=hidden value="2097152">
+        <input type="hidden" name="si" value="huberyhe.github.io">
+      </form>
+    </div>
+  </div>
+  <div class="site-nav" style="display: none;">
+    <ul>
+      
+      
+        <li><a href="/">首页</a></li>
+      
+        <li><a href="/categories/life">生活</a></li>
+      
+        <li><a href="/archives">归档</a></li>
+      
+      
+    </ul>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-hexo-导入markdown文件" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/07/06/hexo-%E5%AF%BC%E5%85%A5markdown%E6%96%87%E4%BB%B6/" class="article-date">
+  <time datetime="2017-07-06T04:15:48.000Z" itemprop="datePublished">2017-07-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      [hexo]导入markdown文件
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>习惯用markdown记笔记，然后导入到hexo，实际上之前写了许多markdown笔记需要导入，那么一般的流程是这样的：<br>1.hexo new blog_name<br>2.cat note.md &gt;&gt; source/_posts/blog_name.md<br>3.edit tags of blog_name.md</p>
+<h4 id="我写了一个shell脚本（new-from-md-sh）去简化操作："><a href="#我写了一个shell脚本（new-from-md-sh）去简化操作：" class="headerlink" title="我写了一个shell脚本（new_from_md.sh）去简化操作："></a>我写了一个shell脚本（new_from_md.sh）去简化操作：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [[ <span class="variable">$#</span> -lt 1 ]]; <span class="keyword">then</span></span><br><span class="line">	<span class="built_in">echo</span> <span class="string">&quot;Usage: <span class="variable">$0</span> markdown_file&quot;</span></span><br><span class="line">	<span class="built_in">exit</span> 1</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line">tag_line=4</span><br><span class="line">markdown_file=<span class="variable">$1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [[ ! -f <span class="variable">$markdown_file</span> ]]; <span class="keyword">then</span></span><br><span class="line">	<span class="built_in">echo</span> <span class="string">&quot;file <span class="variable">$markdown_file</span> not exist!&quot;</span></span><br><span class="line">	<span class="built_in">exit</span> 2</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line">u_home=$(<span class="built_in">echo</span> ~)</span><br><span class="line">posted_file=$(<span class="built_in">basename</span> <span class="variable">$markdown_file</span> | sed <span class="string">&#x27;s/.md$//&#x27;</span> | awk <span class="string">&#x27;&#123;print &quot;\&quot;&quot;$0&quot;\&quot;&quot;&#125;&#x27;</span> | xargs hexo new | <span class="built_in">tee</span> /dev/stderr | awk <span class="string">&#x27;&#123;print $NF&#125;&#x27;</span> | sed <span class="string">&#x27;s@^~@&#x27;</span><span class="string">&quot;<span class="variable">$&#123;u_home&#125;</span>&quot;</span><span class="string">&#x27;@&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [[ ! -f <span class="variable">$posted_file</span> ]]; <span class="keyword">then</span></span><br><span class="line">	<span class="built_in">echo</span> <span class="string">&quot;file <span class="variable">$posted_file</span> not exist!&quot;</span></span><br><span class="line">	<span class="built_in">exit</span> 2</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;cat <span class="variable">$markdown_file</span> &gt;&gt; <span class="variable">$posted_file</span>&quot;</span></span><br><span class="line"><span class="built_in">cat</span> <span class="variable">$markdown_file</span> &gt;&gt; <span class="variable">$posted_file</span></span><br><span class="line"></span><br><span class="line">hexo list tag</span><br><span class="line"></span><br><span class="line"><span class="built_in">read</span> -p <span class="string">&quot;tag(muti tags with &#x27;;&#x27;): &quot;</span> tag_list</span><br><span class="line"><span class="keyword">if</span> [[ <span class="variable">$tag_list</span> != <span class="string">&quot;&quot;</span> ]]; <span class="keyword">then</span></span><br><span class="line">	<span class="keyword">for</span> tag <span class="keyword">in</span> `<span class="built_in">echo</span> <span class="variable">$tag_list</span> | sed <span class="string">&#x27;s/;$//&#x27;</span> | sed <span class="string">&#x27;s\;\ \g&#x27;</span>`; <span class="keyword">do</span></span><br><span class="line">		sed -i <span class="string">&quot;<span class="variable">$&#123;tag_line&#125;</span>a- <span class="variable">$&#123;tag&#125;</span>&quot;</span> <span class="variable">$posted_file</span></span><br><span class="line">		<span class="built_in">let</span> tag_line=<span class="variable">$tag_line</span>+1</span><br><span class="line">	<span class="keyword">done</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># hexo d -g</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Done!&quot;</span></span><br></pre></td></tr></table></figure>
+<p>脚本会尝试用md文件markdown_file的名字当作hexo文章的名称posted_file，当然md文件和hexo文章的名称不一定是一样的，hexo会重新格式化；然后把markdown_file的内容cat到posted_file的后面；最后列出hexo已有的tag，并让用户指定这篇文章的tag。</p>
+<h4 id="用法与用量："><a href="#用法与用量：" class="headerlink" title="用法与用量："></a>用法与用量：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">www@v-ubuntu:~/git_repo/hexo_blog$ ./new_from_md.sh ~/markdown/systemd.md</span><br><span class="line">INFO  Created: ~/git_repo/hexo_blog/source/_posts/systemd.md</span><br><span class="line"><span class="built_in">cat</span> /home/www/markdown/systemd.md &gt;&gt; /home/www/git_repo/hexo_blog/source/_posts/systemd.md</span><br><span class="line">INFO  Start processing</span><br><span class="line">Name        Posts  Path</span><br><span class="line">Linux           1  tags/Linux/</span><br><span class="line">MySQL           1  tags/MySQL/</span><br><span class="line">editer&amp;ide      1  tags/editer-ide/</span><br><span class="line">life            1  tags/life/</span><br><span class="line">tag(muti tags with <span class="string">&#x27;;&#x27;</span>): Linux</span><br><span class="line">Done!</span><br><span class="line">www@v-ubuntu:~/git_repo/hexo_blog$</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://huberyhe.github.io/2017/07/06/hexo-%E5%AF%BC%E5%85%A5markdown%E6%96%87%E4%BB%B6/" data-id="cl015mdq30004moc0apa5hisg" class="article-share-link">分享到</a>
+      
+
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Bash/" rel="tag">Bash</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/07/16/oh-my-zsh%E9%85%8D%E7%BD%AE/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          oh-my-zsh配置
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/07/06/systemd/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">systemd</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+  <section id="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section>
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2022 Hubery He<br>
+      Theme <a href="https://github.com/henryhuang/oishi" target="_blank">Oishi</a>, Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <!--
+      <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/categories/life" class="mobile-nav-link">生活</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+</nav>
+    -->
+    
+<script>
+  var disqus_shortname = 'disqus_epqVtyT4y1';
+  
+  var disqus_url = 'http://huberyhe.github.io/2017/07/06/hexo-%E5%AF%BC%E5%85%A5markdown%E6%96%87%E4%BB%B6/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<!-- 百度分享 start -->
+
+<!-- 百度分享 end -->
+
+<script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+
+<script src="/js/jquery.scrollUp.min.js"></script>
+
+
+<script src="/js/jquery.transform.js"></script>
+
+
+<script src="/js/menu.js"></script>
+
+
+
+<script src="/js/script.js"></script>
+
+
+<script src="/js/scrollUp.js"></script>
+
+
+  </div>
+</body>
+</html>
