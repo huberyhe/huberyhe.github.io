@@ -12,14 +12,14 @@ if [[ ! -f $markdown_file ]]; then
 	exit 2
 fi
 u_home=$(echo ~)
-posted_file=$(basename $markdown_file | sed 's/.md$//' | awk '{print "\""$0"\""}' | xargs hexo new | tee /dev/stderr | awk '{print $NF}' | sed 's@^~@'"${u_home}"'@' | sed 's@^\.@'"${PWD}"'@')
+posted_file=$(basename "$markdown_file" | sed 's/.md$//' | awk '{print "\""$0"\""}' | xargs hexo new | tee /dev/stderr | awk '{print $NF}' | sed 's@^~@'"${u_home}"'@' | sed 's@^\.@'"${PWD}"'@')
 
 if [[ ! -f $posted_file ]]; then
 	echo "file $posted_file not exist!"
 	exit 2
 fi
 echo "cat $markdown_file >> $posted_file"
-cat $markdown_file >> $posted_file
+cat "$markdown_file" >> $posted_file
 
 hexo list tag
 
