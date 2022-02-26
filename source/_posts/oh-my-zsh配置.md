@@ -10,9 +10,12 @@ tags:
 > Oh-My-Zsh is an open source, community-driven framework for managing your ZSH configuration. It comes bundled with a ton of helpful functions, helpers, plugins, themes, and a few things that make you shout...
 
 Ubuntu默认的终端样式，用了很久，其实也不差
-![默认bash](http://qn-img.sreping.com/img/202202232308313.jpeg)
+
+![默认bash](https://raw.githubusercontent.com/huberyhe/image-bed/bed/markdown/__4d0a62f32693fce8073b7c93e96f2b38.png)
 但是用上oh-my-zsh后，更加美观且实用
-![使用oh-my-zsh](http://qn-img.sreping.com/img/202202232308451.png)
+
+![使用oh-my-zsh](https://raw.githubusercontent.com/huberyhe/image-bed/bed/markdown/__bf450d643afe100fd78284730e7a9a70.png)
+
 ## 安装zsh
 1.安装zsh：`sudo apt install zsh`
 2.确认安装：`zsh --version`
@@ -31,9 +34,11 @@ export DEFAULT_USER="www"
 ```
 ## 安装字体支持
 此时终端是这样的，因为字体不支持，显示很奇怪
-![缺少字体](http://qn-img.sreping.com/img/202202232309621.png)
+
+![缺少字体](https://raw.githubusercontent.com/huberyhe/image-bed/bed/markdown/__0dd472584cdf1188281f743d2ff14949.png)
 `angoster`这个主题需要`Powerline-patched font`这个字体才能正常
 1.安装
+
 ```
 # clone
 git clone https://github.com/powerline/fonts.git
@@ -48,6 +53,24 @@ rm -rf fonts
 打开`Edit->Profiles->Default->Edit->Font`， 选择`Ubuntu Mono derivative Powerline`
 
 至此完成了最简单的配置，感受飞起的命令行吧！
+
+## 加速，解决卡慢问题
+
+由于获取仓库信息比较耗时，解决方法：
+
+1、设置不读取文件变化信息
+
+```bash
+git config --add oh-my-zsh.hide-dirty 1
+```
+
+2、设置不读取任何git信息
+
+```bash
+git config --add oh-my-zsh.hide-status 1
+```
+
+
 
 >参考：
 >[oh-my-zsh](http://ohmyz.sh/)
